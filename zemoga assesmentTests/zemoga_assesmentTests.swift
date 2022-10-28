@@ -9,6 +9,8 @@ import XCTest
 @testable import zemoga_assesment
 
 class zemoga_assesmentTests: XCTestCase {
+    
+    var app = ViewController()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,11 +21,29 @@ class zemoga_assesmentTests: XCTestCase {
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        
+        // Test posts
+        app.loadPosts()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            XCTAssertTrue(self.app.posts!.count > 0, "Posts should not be empty, something wrong loading the posts ")
+        }
+        
+        // Test authors
+        for post in self.app.posts!{
+            app.loadAuthor(idAuthor: post.userId)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                XCTAssertTrue(self.app.authorResponse != nil, "Author should not be nil, something wrong loading the author information")
+            }
+        }
+        
+        // Test comments
+        for post in self.app.posts!{
+            app.loadComments(postId: post.id)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                XCTAssertTrue(self.app.comments!.count > 0, "Comments should not be empty, something wrong loading the comments")
+            }
+        }
     }
 
     func testPerformanceExample() throws {

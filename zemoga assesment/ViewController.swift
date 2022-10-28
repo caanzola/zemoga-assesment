@@ -31,13 +31,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.loadingIndicator.isHidden = false
         self.loadingIndicator.startAnimating()
         self.favPosts.removeAll()
+        loadPosts()
+    }
+    
+    func loadPosts() {
         let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
         URLSession.shared.fetchPosts(at: url) { result in
           switch result {
               case .success(let posts):
                   self.posts = posts
                   DispatchQueue.main.async {
-                      self.emptyView.isHidden = (self.posts != nil)
+                      self.emptyView?.isHidden = (self.posts != nil)
                       self.loadingIndicator.isHidden = true
                       self.tableView.isHidden = false
                       self.removeAllButton.isHidden = false
