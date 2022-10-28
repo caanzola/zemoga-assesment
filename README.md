@@ -34,6 +34,10 @@ You can delete a post clicking in the gargbage icon
 You can click the button remove all to delete all the posts except the favorite ones
 
 
+### Pictures
+
+![](./pictures/1.png)
+
 ### Notes
 
 This app was designed in a simple way in order to show the data in a easy and efficient way. The list of posts is showed in a UITableView which is the best way to show lists in iOS but is not contained within a UITableViewController because there are customized details like buttons and labels in the same view which is better in a UIViewController. To manage the favorites list the app is using two different data sources based on array data structure but the same UITableView and those are separated through sections. The storage strategy used is in-memory storage which is very good for simple data schemas like this one cause it's easy and quick but if we were working with bigger or more complex data, another strategy should be used to present the information in an efficient way. In addition the GUI of the app was designed for the lasts vetrsions of iPhone but is not optimized for every iPhone device so this app looks better in iPone 13 and 12 versions.
