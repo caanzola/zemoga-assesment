@@ -36,7 +36,7 @@ You can click the button remove all to delete all the posts except the favorite 
 
 ### Pictures
 
-![](./pictures/1.png =250x)
+![](./pictures/1.png)
 ![](./pictures/2.png)
 ![](./pictures/3.png)
 ![](./pictures/4.png)
